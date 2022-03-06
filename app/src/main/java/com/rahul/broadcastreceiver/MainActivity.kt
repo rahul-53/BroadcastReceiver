@@ -4,12 +4,16 @@ import android.content.Intent
 import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.rahul.broadcastreceiver.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var receiver:SystemBroadcastReceiver
+    lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setUser()
         broadcastReceiverRegister()
     }
 
@@ -18,6 +22,11 @@ class MainActivity : AppCompatActivity() {
         IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED).also {
             registerReceiver(receiver, it)
         }
+    }
+
+    fun setUser(){
+        val firstUser =User("rahul", "yadav", 24, true)
+        binding.user = firstUser
     }
 
     override fun onStop() {
