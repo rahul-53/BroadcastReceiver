@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //setUser()
-        observeData()
+        setUser()
+        //observeData()
         broadcastReceiverRegister()
     }
 
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         unregisterReceiver(receiver)
     }
 
-    private fun observeData(){
+    /*private fun observeData(){
         myViewModel= ViewModelProvider(this)[MyViewModel::class.java]
         binding.viewModel  = myViewModel
         binding.lifecycleOwner = this
@@ -57,5 +57,5 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
-    }
+    }*/
 }
